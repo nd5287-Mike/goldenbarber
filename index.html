@@ -869,34 +869,6 @@ function checkAuth() {
 function showLoginScreen() {
   document.getElementById('app-wrapper').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
-  const savedUrl = localStorage.getItem('gb_gas_url');
-  if (!savedUrl) {
-    // 未設定過：顯示 GAS URL 輸入區塊
-    document.getElementById('gas-setup').style.display = 'flex';
-    document.getElementById('gas-change-hint').style.display = 'none';
-  } else {
-    // 已設定：隱藏設定區塊，顯示「變更網址」小提示
-    document.getElementById('gas-setup').style.display = 'none';
-    document.getElementById('gas-change-hint').style.display = 'block';
-  }
-}
-
-function saveGasUrl() {
-  const url = document.getElementById('gas-url-input').value.trim();
-  if (!url.startsWith('https://script.google.com')) {
-    alert('請輸入正確的 Google Apps Script 網址');
-    return;
-  }
-  localStorage.setItem('gb_gas_url', url);
-  document.getElementById('gas-setup').style.display = 'none';
-  showToastLogin('✓ 網址已儲存！請輸入密碼登入');
-}
-
-function showChangeUrl() {
-  localStorage.removeItem('gb_gas_url');
-  document.getElementById('gas-setup').style.display = 'flex';
-  document.getElementById('gas-change-hint').style.display = 'none';
-  document.getElementById('gas-url-input').focus();
 }
 
 function showToastLogin(msg) {
@@ -926,9 +898,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('login-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') doLogin();
   });
-  document.getElementById('gas-url-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') saveGasUrl();
-  });
+
   if (checkAuth()) {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('app-wrapper').style.display = 'block';
