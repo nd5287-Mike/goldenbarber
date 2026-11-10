@@ -655,20 +655,8 @@
     <div style="font-size:.85rem;color:#8B6914;margin-top:4px;">業績管理系統</div>
   </div>
   <div style="background:#2A2016;border:1px solid #3D3020;border-radius:12px;padding:28px 32px;width:min(88vw,320px);display:flex;flex-direction:column;gap:16px;">
-    <div id="gas-setup" style="display:none;flex-direction:column;gap:10px;">
-      <label style="color:#C9A84C;font-size:.88rem;font-weight:600;">⚙️ 首次設定：貼上 Google Apps Script 網址</label>
-      <input id="gas-url-input" type="url" placeholder="https://script.google.com/macros/s/..."
-        style="background:#1A1410;border:1px solid #3D3020;border-radius:8px;padding:12px 14px;color:#FAF6EE;font-size:.85rem;outline:none;width:100%;box-sizing:border-box;"
-        onfocus="this.style.borderColor='#C9A84C'" onblur="this.style.borderColor='#3D3020'">
-      <button onclick="saveGasUrl()"
-        style="background:#2A5A2A;color:#7fcf7f;border:1px solid #2d6a2d;border-radius:8px;padding:10px;font-size:.9rem;font-weight:700;cursor:pointer;">
-        儲存網址
-      </button>
-      <hr style="border-color:#3D3020;margin:4px 0;">
-    </div>
-    <div id="gas-change-hint" style="display:none;font-size:.75rem;color:#7a6a4a;text-align:right;margin-bottom:2px;">
-      已連結 GAS · <span onclick="showChangeUrl()" style="cursor:pointer;color:#C9A84C;text-decoration:underline;">變更網址</span>
-    </div>
+
+
     <label style="color:#C9A84C;font-size:.88rem;font-weight:600;">請輸入密碼</label>
     <input id="login-input" type="password" placeholder="密碼" autocomplete="current-password"
       style="background:#1A1410;border:1px solid #3D3020;border-radius:8px;padding:12px 14px;color:#FAF6EE;font-size:1rem;outline:none;width:100%;box-sizing:border-box;"
@@ -953,7 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ─── Storage helpers ─────────────────────────────────────────────────────
 // ── API 設定（Google Apps Script 網址）────────────────────────────
 function getApiUrl() {
-  return localStorage.getItem('gb_gas_url') || '';
+  return 'https://script.google.com/macros/s/AKfycbwDQ50UjnkY2nTOzt-XPMg3UQutdpsM2TWvW7ohdmYITymk5Zz5rRNJmQW1Tw4SiwDHJw/exec';
 }
 
 // ── 全域快取，避免每次都打 API ──────────────────────────────────
