@@ -935,10 +935,12 @@ async function loadAll() {
 async function saveAll(data) {
   _cache = data;
   try {
+    // 附上 token 一起送出
+    const payload = Object.assign({}, data, { _token: 'gb_golden2026_secret' });
     const res = await fetch(getApiUrl(), {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },  // GAS requires text/plain for no-cors bypass
-      body: JSON.stringify(data)
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
     });
     const result = await res.json();
     if (!result.success) console.error('儲存失敗', result);
